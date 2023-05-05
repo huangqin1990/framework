@@ -2,7 +2,7 @@
   "name": "framework",
   "version": "1.0.0",
   "description": "",
-  "type":"module",
+  "type": "module",
   "main": "rollup.config.js",
   "scripts": {
     "build": "rollup -c",
@@ -29,6 +29,7 @@
     "serve": "^14.2.0"
   },
   "dependencies": {
+    "core-js": "^3.30.1",
     "date-fns": "^2.29.3"
   }
 }
