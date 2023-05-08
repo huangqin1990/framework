@@ -1,3 +1,3 @@
-/*! BotimFramework: https://botim.com/ - MIT License */
-var BotimFramework=function(r){"use strict";var e=/(iOS|Android)MPAdapter\/(\d+(\.?\d*))(\(.*\)|\/.*)?/;return r.createBotApp=function(){var r,o,t=(r={},o=e.exec(navigator.userAgent),r.platform=o?o[1].toLowerCase():"web",r.version=o?o[2]:-1,r.features=o?o[4]:"",r),a=t.platform,n=t.features,i=t.version;console.log("platform",a,n,i)},r}({});
+/*! BotFramework: https://botim.com/ - MIT License */
+!function(e,o){"object"==typeof exports&&"undefined"!=typeof module?o(exports):"function"==typeof define&&define.amd?define(["exports"],o):o((e="undefined"!=typeof globalThis?globalThis:e||self).BOT={})}(this,(function(e){"use strict";var o=/(iOS|Android)MPAdapter\/(\d+(\.?\d*))(\(.*\)|\/.*)?/;e.createBotApp=function(){var e,t,n=(e={},t=o.exec(navigator.userAgent),e.platform=t?t[1].toLowerCase():"web",e.version=t?t[2]:-1,e.features=t?t[4]:"",e).platform;console.log("platform",n)}}));
 //# sourceMappingURL=bot.bundle.js.map

@@ -6,7 +6,7 @@ import babel from '@rollup/plugin-babel';
 // `npm run build` -> `production` is true
 // `npm run dev` -> `production` is false
 const production = !process.env.ROLLUP_WATCH;
-const banner = '/*! BotimFramework: https://botim.com/ - MIT License */';
+const banner = '/*! BotFramework: https://botim.com/ - MIT License */';
 
 export default {
 	input: 'core/index.js',
@@ -16,12 +16,13 @@ export default {
 			sourcemap: true,
 			format: 'esm',
 			generatedCode: { constBindings: true },
+			plugins: [terser()],
 			banner,
 		},
 		{
 			file: 'public/bot.bundle.js',
-			format: 'iife',
-			name: 'BotimFramework',
+			format: 'umd',
+			name: 'BOT',
 			sourcemap: true,
 			generatedCode: { constBindings: true },
 			plugins: [terser()],
