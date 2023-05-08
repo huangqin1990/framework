@@ -3,8 +3,9 @@ import { getPlatformInfo } from "./platform"
 
 const GlobalAppState = new Map()
 
-const createBotApp = () => {
-   // const { platform, features, version } = getPlatformInfo()
+export const createBotApp = () => {
+   const { platform, features, version } = getPlatformInfo()
+   console.log('platform', platform, features, version)
    // const isReady = () => {
    //    const iosReady = platform === 'ios' && version >=1 && /mixPMPrompt|usePostMessage/.test(features)
    //    return iosReady() && window?.webkit?.messageHandlers?.BOTbridge
