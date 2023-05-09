@@ -14,7 +14,7 @@ export default {
 		{
 			file: 'public/bot.esm.js',
 			sourcemap: true,
-			format: 'esm',
+			format: 'es',
 			generatedCode: { constBindings: true },
 			plugins: [terser()],
 			banner,

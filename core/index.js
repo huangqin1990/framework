@@ -1,1 +1,1 @@
-export { createBotApp } from './runtime'
+export { Bot } from './global'
