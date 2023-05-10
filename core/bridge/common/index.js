@@ -11,7 +11,7 @@ const defaultCallBackName = () => `__cb_${uuidv4().replace(/-/g, '')}`
 
 /**
  * 
- * @param {*} scope 模块域
+ * @param {*} moudle 模块域
  * @returns  创建模块域下唯一的回调函数名
  */
 export const createCallBackName = scope => {
@@ -37,9 +37,9 @@ export const registerCallback = (name, {success, fail, complete}) => {
  * @param {*} scope 域
  * @returns Object || null 
  */
-export const syncCallNativeMethod = (methodName, scope = 'BOTbridge') => () => {
+export const syncCallNativeMethod = (functionName, scope = 'BOTbridge') => () => {
     let nativeResponse = null
-    const payload = { type: scope, functionName: methodName, arguments: Array.prototype.slice.call(arguments) }
+    const payload = { type: scope, functionName, arguments: Array.prototype.slice.call(arguments) }
     const res = window.prompt(JSON.stringify(payload))
     isString(res) && (nativeResponse = JSON.parse(res))
     Array.isArray(res) && (nativeResponse = res[0])
@@ -47,4 +47,19 @@ export const syncCallNativeMethod = (methodName, scope = 'BOTbridge') => () => {
 }
 
 
+/**
+ *  同步通知，native查询方法并调用BOTBridgeCallback上绑定的方法回调数据到web
+ * @param {*} functionName 
+ * @param {*} scope 
+ * @returns 
+ */
+export const asyncCallNativeMethod = (functionName, scope = 'BOTbridge') => () => {
+    const payload = { functionName, arguments: Array.prototype.slice.call(arguments) }
+    window.webkit.messageHandlers[scope].postMessage(payload);
+}
 
+
+
+export const createCallBack = (callBackName, { success, fail, complete }) => {
+
+}

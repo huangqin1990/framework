@@ -1,3 +1,5 @@
+import { getModule } from "../module"
+
 // 工具函数类，包含日志处理类
 
 const handleError = error => window.console.error('error', error)
@@ -27,3 +29,10 @@ export const isPromise = isType('Promise')
 
 // 非空对象
 export const isNotEmptyObject = target => isObject(target) && Reflect.ownKeys(target).length > 0
+
+
+export const isSyncFunction = (module, name) => {
+    const moduleInstance = getModule(module)
+    const reg = /^(is.*|.*Sync)$/
+    reg.test(name) || moduleInstance(name).isSync
+}

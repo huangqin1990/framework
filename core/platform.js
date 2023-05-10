@@ -8,3 +8,8 @@ export const getPlatformInfo = () => {
     platformInfo.features = execAgent ? execAgent[4] : '';
     return platformInfo;
 }
+
+export const isNativePlatform = () => {
+    const { platform } = getPlatformInfo()
+    return platform !== 'web'
+}
