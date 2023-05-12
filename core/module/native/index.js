@@ -9,3 +9,27 @@ export const registerAllNativeModule = () => {
     console.log('注册原生模块')
     registerNativeModule('Camera', Camera)
 }
+
+class NativeModule {
+    modules = new WeakMap()
+    constructor() {
+    
+    }
+    registerNativeModule(scope, module) {
+        this.modules.set({ scope }, module)
+    }
+    invokeNativeModule(scope, method, args) {
+        const module = this.modules.get({ scope })
+        if (module) {
+            const fn = module[method]
+            if (fn) {
+                fn.apply(module, args)
+            } else {
+                console.warn(`Module ${scope} does not implement method ${method}`)
+            }
+        } else {
+            console.warn(`Module ${scope} is not registered`)
+        }
+    }
+
+}

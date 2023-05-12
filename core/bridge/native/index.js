@@ -1,1 +1,1 @@
-import { asyncCallNativeMethod, syncCallNativeMethod, createCallBackName } from './common/index.js'
+import { asyncCallNativeMethod, syncCallNativeMethod, createCallBackName } from './common/index.js'  
