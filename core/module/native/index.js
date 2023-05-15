@@ -12,9 +12,7 @@ export const registerAllNativeModule = () => {
 
 class NativeModule {
     modules = new WeakMap()
-    constructor() {
-    
-    }
+    constructor() {}
     registerNativeModule(scope, module) {
         this.modules.set({ scope }, module)
     }
@@ -23,6 +21,7 @@ class NativeModule {
         if (module) {
             const fn = module[method]
             if (fn) {
+                console.log(module, args, '执行上下文')
                 fn.apply(module, args)
             } else {
                 console.warn(`Module ${scope} does not implement method ${method}`)
@@ -33,3 +32,5 @@ class NativeModule {
     }
 
 }
+
+export default new NativeModule()

@@ -37,7 +37,7 @@ export const registerCallback = (name, {success, fail, complete}) => {
  * @param {*} scope 域
  * @returns Object || null 
  */
-export const syncCallNativeMethod = (functionName, scope = 'BOTbridge') => () => {
+export const createSyncCallNativeMethod = (functionName, scope = 'BOTbridge') => () => {
     let nativeResponse = null
     const payload = { type: scope, functionName, arguments: Array.prototype.slice.call(arguments) }
     const res = window.prompt(JSON.stringify(payload))
@@ -53,7 +53,7 @@ export const syncCallNativeMethod = (functionName, scope = 'BOTbridge') => () =>
  * @param {*} scope 
  * @returns 
  */
-export const asyncCallNativeMethod = (functionName, scope = 'BOTbridge') => () => {
+export const createAsyncCallNativeMethod = (functionName, scope = 'BOTbridge') => () => {
     const payload = { functionName, arguments: Array.prototype.slice.call(arguments) }
     window.webkit.messageHandlers[scope].postMessage(payload);
 }
